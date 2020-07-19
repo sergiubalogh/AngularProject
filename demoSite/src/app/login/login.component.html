@@ -1,9 +1,9 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="Email" placeholder="Email" >
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" >
+      <form [formGroup]="registerForm">
+        <input type="text" id="login" class="fadeIn second" name="Email" placeholder="Email" formControlName="email">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" formControlName="password" >
         <input type="submit" class="fadeIn fourth" value="Log In" (click)="onLoginInPress()">
       </form>
   

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { auth } from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
-
-import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +11,9 @@ import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectL
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  username:string;
-  password:string;
+
   registerForm:FormGroup
-  constructor(private fb:FormBuilder, private auth:AngularFireAuthGuard) { }
+  constructor(private fb:FormBuilder, public auth:AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -25,7 +24,11 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser() {
-    this.auth.
-    console.log(this.registerForm.value)
+    const {email,password} = this.registerForm.value;
+    this.auth.createUserWithEmailAndPassword(email,password).then(user => {
+      console.log(user);
+      this.router.navigate(['']);
+    })
+   
   }
 }

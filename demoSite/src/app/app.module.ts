@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -17,7 +18,8 @@ import { environment } from 'src/environments/environment';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    routingComponent
+    routingComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
